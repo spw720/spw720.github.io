@@ -463,11 +463,11 @@ function highlight(){
 
   focusIndex = 264-focusIndex;
 
-  let info = 'The value of '+metricText+' of '+focusCountry+' is '+focusInfo+' and ranks '+suff(focusIndex)+' for '+metricText+' in the World';
+  let info = 'The '+metricText+' of '+focusCountry+' is '+focusInfo+' and ranks '+suff(focusIndex)+' for '+metricText+' in the World';
 
   if (focusInfo == '') {
-    console.log('The value '+metricText+' of '+focusCountry+' is not available');
-    document.getElementById("info").innerHTML = 'The value '+metricText+' of '+focusCountry+' is not available';
+    console.log('The '+metricText+' of '+focusCountry+' is not available');
+    document.getElementById("info").innerHTML = 'The '+metricText+' of '+focusCountry+' is not available';
   }
   else{
     console.log(info);
