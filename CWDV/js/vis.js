@@ -123,7 +123,7 @@ let countriesData = []
 
 function readCountryData(){
 
-  d3.csv('/data/factbook.csv')
+  d3.csv('data/factbook.csv')
     .then(function(data) {
       for (var i = 0; i < data.length; i++) {
 
@@ -186,7 +186,7 @@ function readCountryData(){
 let codes = [];
 
 function countryCodes(){
-  d3.csv('/data/countryCodes.csv')
+  d3.csv('data/countryCodes.csv')
     .then(function(data) {
 
       for (var i = 0; i < data.length; i++) {
