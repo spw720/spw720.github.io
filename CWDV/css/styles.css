@@ -1,0 +1,35 @@
+* {
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.options {
+  width: 100%;
+  text-align: center;
+}
+
+.flexy {
+  display: inline-block;
+}
+
+body {
+  background-color: black;
+}
+
+label {
+  color: white;
+}
+
+#title {
+  color: white;
+  font-size: 30px;
+}
+
+#info {
+  color: white;
+  font-size: 20px;
+}
+
+.colorLabel {
+  color: white;
+  font-size: 18px;
+}

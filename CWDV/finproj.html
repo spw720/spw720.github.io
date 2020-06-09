@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>World Data Visualizer</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="https://d3js.org/d3.v5.js"></script>
+    <script src="js/rainbowvis.js"></script>
+    <script src="js/vis.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.js"></script>
+    <script src="https://d3js.org/d3-geo-projection.v2.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
+
+</head>
+<body onload="setUp()">
+
+  <div id="map-chart"></div>
+
+  <div class="options">
+
+    <div id="title">Customizable World Data Visualizer - Sean Wilson 2020</div>
+    <hr>
+
+    <div class="flexy">
+
+      <label for="metric">Choose Metric to Visulaize:</label>
+      <br>
+      <select id="metric" onchange="highlight()">
+
+        <optgroup label="Infrastructure">
+          <!-- <option value="Area(sq km)">Area(sq km)</option> -->
+          <option value="area">Area(sq km)</option>
+          <option value="highway">Highways(km)</option>
+          <option value="population">Population</option>
+          <option value="railway">Railways(km)</option>
+          <option value="laborF">Labor force</option>
+          <option value="unempR">Unemployment rate(%)</option>
+
+        <optgroup label="Health">
+          <option value="birthR">Birth rate(births/1000 population)</option>
+          <option value="deathR">Death rate(deaths/1000 population)</option>
+          <option value="lExpect">Life expectancy at birth(years)</option>
+          <option value="infMort">Infant mortality rate(deaths/1000 live births)</option>
+          <option value="fertRate">Total fertility rate(children born/woman)</option>
+          <option value="aidsDeath">HIV/AIDS - deaths</option>
+          <option value="aidsLive">HIV/AIDS - people living with HIV/AIDS</option>
+
+        <optgroup label="Economic">
+          <option value="debt">Debt - external</option>
+          <option value="infRate">Inflation rate (consumer prices)(%)</option>
+          <option value="importt">Imports</option>
+          <option value="exportt">Exports</option>
+          <option value="gdp">GDP</option>
+
+        <optgroup label="Military">
+          <option value="militDollar">Military expenditures - dollar figure</option>
+          <option value="militGDP">Military expenditures - percent of GDP(%)</option>
+
+        <optgroup label="Gas">
+          <option value="gasConsump">Natural gas - consumption(cu m)</option>
+          <option value="gasProd">Natural gas - production(cu m)</option>
+          <option value="gasExport">Natural gas - exports(cu m)</option>
+          <option value="gasImport">Natural gas - imports(cu m)</option>
+
+        <optgroup label="Oil">
+          <option value="oilConsump">Oil - consumption(bbl/day)</option>
+          <option value="oilProd">Oil - production(bbl/day)</option>
+          <option value="oilExport">Oil - exports(bbl/day)</option>
+          <option value="oilImport">Oil - imports(bbl/day)</option>
+
+        <optgroup label="Technology">
+          <option value="elecConsump">Electricity - consumption(kWh)</option>
+          <option value="elecProd">Electricity - production(kWh)</option>
+          <option value="iHosts">Internet hosts</option>
+          <option value="iUsers">Internet users</option>
+          <option value="teleLand">Telephones - main lines in use</option>
+          <option value="teleMobile">Telephones - mobile cellular</option>
+
+      </select>
+      <br>
+      <br>
+      <label for="hl">See country details of:</label>
+      <br>
+      <select class="hl" id="hl" name="hl" onchange="highlight()">
+      </select>
+      <br>
+      <br>
+      <div id="info"></div>
+      </div>
+      <div class="flexy">
+      <div class="colorLabel">
+        Choose Map Colors:
+      </div>
+      <label for="bg">Background:</label>
+      <input type="color" id="bg" name='bg' value='#000000' onchange="changeProjection()">
+      <label for="grat">Graticule:</label>
+      <input type="color" id="grat" name='grat' value='#FFFFFF' onchange="changeProjection()">
+      <label for="map">No Data:</label>
+      <input type="color" id="map" name='map' value='#000000' onchange="changeProjection()">
+      <label for="out">Land Outline:</label>
+      <input type="color" id="out" name='out' value='#595959' onchange="changeProjection()">
+      <hr>
+      <div class="colorLabel">
+        Choose Metric Color Ramp:
+      </div>
+      <label for="startC">Low Values:</label>
+      <input type="color" id="startC" name='startC' value='#228B22' onchange="changeProjection()">
+      <label for="midC">Median Values:</label>
+      <input type="color" id="midC" name='midC' value='#FFD700' onchange="changeProjection()">
+      <label for="endC">High Values:</label>
+      <input type="color" id="endC" name='endC' value='#000000' onchange="changeProjection()">
+      <hr>
+      <label for="projection">Choose Map Projection:</label>
+      <br>
+      <select id="projection" onchange="changeProjection()">
+        <option value="13">-Select Projection-</option>
+        <option value="1">Albers</option>
+        <option value="2">Azimuthal Equal Area</option>
+        <option value="3">Azimuthal Equidistant</option>
+        <option value="4">Conic Conformal</option>
+        <option value="5">Conic Equal Area</option>
+        <option value="6">Conic Equidistant</option>
+        <option value="7">Equirectangular</option>
+        <option value="8">Gnomonic</option>
+        <option value="9">Mercator</option>
+        <option value="10">Orthographic</option>
+        <option value="11">Stereographic</option>
+        <option value="12">Transverse Mercator</option>
+        <option value="13">Winkel</option>
+      </select>
+
+    </div>
+
+  </div>
+
+
+</body>
+
+</html>
